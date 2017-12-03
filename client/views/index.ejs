@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Message Board</title>
+  </head>
+  <body>
+    <h1>The Dojo Message Board</h1>
+    <form class="" action="/add_message" method="post">
+      <input type="text" name="name" placeholder="Name"><br>
+      <input type="text" name="message" placeholder="Message"><br>
+      <input type="submit" name="" value="Post message"><br>
+    </form>
+    <hr>
+    <h1>All Messages</h1>
+
+    <% for (var message of messages) { %>
+      <h3><%= message.name %> - <%= message.createdAt %></h3>
+      <h3><%= message.message %></h3>
+
+          <% for (var comment of message.comments) { %>
+            <h5><%=comment.name %> - <%=comment.comment %></h5>
+          <% } %>
+
+
+      <form class="" action="/add_comment/<%=message.id%>" method="post">
+        <input type="text" name="name" placeholder="Name"><br>
+        <input type="text" name="comment" placeholder="Comment"><br>
+        <input type="submit" name="" value="Post comment"><br>
+      </form>
+      <hr>
+
+    <% } %>
+
+
+
+
+
+
+  </body>
+</html>
